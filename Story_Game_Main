@@ -1,0 +1,60 @@
+### On line 58 i'm trying to use strings from another function ( sandy_shores_main). How do you call strings from one function into another function?
+### I don't want to copy and paste every string for each function. I'm trying to make the code short and clean.
+
+
+print('''
+*******************************************************************************
+          |                   |                  |                     |
+ _________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+          |                `"=._o`"=._      _`"=._                     |
+ _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+ _________|___________| ;`-.o`"=._; ." ` '`."\` . "-._ /_______________|_______
+|                   | |o;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/_____ /
+*******************************************************************************
+''')
+print("Welcome to Treasure Island.")
+print("Your mission is to find the treasure.") 
+
+#https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Treasure%20Island%20Conditional.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1oDe4ehjWZipYRsVfeAx2HyB7LCQ8_Fvi%26export%3Ddownload
+
+#Write your code below this line 👇
+user1_ = 0
+user1_choice = 0
+user1_name = input("What is your name?\n")
+print("Hello " + user1_name + ". My name is Raul. It's a pleasure to share your company! We're going on an epic quest beyond your wildest dreams. Let us see what treasure beholds us!")
+print("You wake up on sandy shores surrounded by palm trees. You hear seagulls cooing and fluttering around behind you. The air is cool, and the sun feels rejuvinating.")
+#Common
+#Sandy Shores
+def sandy_shores_main():
+  beach1_ = "We could search the beach for useful items. (beach) \n"
+  trees1_ = "We could walk around the palm trees and look for coconuts. (trees) \n"
+  shelter1_ = "Perhaps we should build a shelter to protect ourselves from nasty weather and undesirable wildlife. (shelter) \n"
+  shelter2 = "Would you like to go back to shelter? \n"
+  to_do = "What would you like to do? \n"
+  user1_ = input(to_do + beach1_ + trees1_ + shelter1_)
+  at_beach1_ = trees1_ + shelter1_
+  if user1_ == "beach":
+    sandy_shores_beach()
+#End of Sandy Shores Main Function
+def sandy_shores_beach():
+  user1_ = input("\n Which way should we go? (East) or (West) \n")
+  if user1_ == "west":
+    print("\n You wander the beach going West. You find a large rock cliff that stands more than 50 feet high. Its wall surface looks too smooth to climb from where you're standing. \n")
+    print(to_do + at_beach1_)
+  elif user1_ == "east":
+    print("\n To the East you find a large cliff with a waterfall flowing high above. The waters rush through a heavy, rocky river that leads into the ocean. It would be too dangerous to swim across the river. \n")
+    print(sandy_shores_main(to_do + at_beach1_)) ### This is where i'm stuck. Line 55 also. I need ( to_do) and ( at_beach1_) from function sandy_shores_main()
+#End of Sandy Shores Beach Function
+sandy_shores_main()
