@@ -1,0 +1,171 @@
+## I'm gonna call this good for my class assignment. Spending too much time on it
+## and ready for the next lesson! It was fun though.
+
+print('''
+*******************************************************************************
+          |                   |                  |                     |
+ _________|________________.=""_;=.______________|_____________________|_______
+|                   |  ,-"_,=""     `"=.|                  |
+|___________________|__"=._o`"-._        `"=.______________|___________________
+          |                `"=._o`"=._      _`"=._                     |
+ _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
+|                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
+|___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
+          |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
+ _________|___________| ;`-.o`"=._; ." ` '`."\` . "-._ /_______________|_______
+|                   | |o;    `"-.o`"=._``  '` " ,__.--o;   |
+|___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
+____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
+/______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
+____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
+/______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
+____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
+/______/______/______/______/______/______/______/______/______/______/_____ /
+*******************************************************************************
+''')
+print("Welcome to Treasure Island.")
+print("Your mission is to find the treasure.") 
+
+#https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Treasure%20Island%20Conditional.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1oDe4ehjWZipYRsVfeAx2HyB7LCQ8_Fvi%26export%3Ddownload
+
+#Write your code below this line 👇
+user1_ = 0
+invent_1 = []
+user1_choice = 0
+user1_name = input("What is your name?\n").capitalize()
+print("Hello " + user1_name + ". My name is Raul. It's a pleasure to share your company! We're going on an epic quest beyond your wildest dreams. Let us see what treasure beholds us! \n")
+print("You wake up on sandy shores surrounded by palm trees. You hear seagulls cooing and fluttering around behind you. The air is cool, and the sun feels rejuvinating. \n")
+#Common
+#Sandy Shores
+beach1_ = "\n Search the beach. (beach) \n"
+trees1_ = "\n Wander around the trees. (trees) \n"
+shelter1_ = "\n Find shelter. (shelter) \n"
+shelter2_ = "\n Would you like to go back to shelter? \n"
+to_do = "What would you like to do? \n"
+at_beach1_ = trees1_ + shelter1_
+at_trees1_ = beach1_ + shelter1_
+at_shelter1_ = beach1_ + trees1_
+shelter_built = False
+shelter_have_cover = False
+shelter_have_wood = False
+building_shelter = 0
+
+
+## Sandy Shores Start
+def at_shelter():
+  user1_ = input(to_do + at_shelter1_)
+  if user1_ == "beach":
+    sandy_shores_beach()
+  if user1_ == "trees":
+    sandy_shores_trees()
+def at_beach():
+  user1_ = input(to_do + at_beach1_)
+  if user1_ == "trees":
+    sandy_shores_trees()
+  if user1_ == "shelter":
+    sandy_shores_shelter()
+def at_trees():
+  user1_ = input(to_do + at_trees1_)
+  if user1_ == "beach":
+    sandy_shores_beach()
+  if user1_ == "shelter":
+    sandy_shores_shelter()
+def sandy_shores_main():
+  user1_ = input(to_do + beach1_ + trees1_ + shelter1_).lower()
+  if user1_ == "beach":
+    sandy_shores_beach()
+  if user1_ == "trees":
+    sandy_shores_trees()
+  if user1_ == "shelter":
+    sandy_shores_shelter()
+#End of Sandy Shores Main Function
+def sandy_shores_beach():
+  global invent_1
+  user1_ = input("\n Which way should we go? (East) or (West) \n").lower()
+  if user1_ == "west":
+    print("\n You wander the beach going West. You find a large rock cliff that stands more than 50 feet high. Its wall surface looks too smooth to climb from where you're standing. \n")
+    at_beach()
+  elif user1_ == "east":
+    print("\n To the East you find a large cliff with a waterfall flowing high above. The waters rush through a heavy, rocky river that leads into the ocean. It would be too dangerous to swim across the river. \n")
+  if "wood" not in invent_1:
+    take_wood_ = input("\n There's several sticks of driftwood near the river. Do you want to take them? (Yes) or (No) \n").lower()
+    if take_wood_ == "yes":
+      invent_1.append("wood")
+      print("\n Wood has been added to your inventory! \n")
+      print("\n Your inventory contains: \n")
+      print(*invent_1, sep = ", ")
+      print("\n")
+      user1_ = input(to_do + at_beach1_).lower()
+      if user1_ == "trees":
+        sandy_shores_trees()
+      if user1_ == "shelter":
+        sandy_shores_shelter()
+  else:
+    print("\n There's still lots of driftwood, but I don't think we can carry anymore! \n")
+    at_beach()
+  #End of Sandy Shores Beach Function
+def sandy_shores_trees():
+  print("\n There are quite a few seagulls in the palm trees above. Hopefully they're friendly! \n")
+  user1_ = input("\n There are many coconuts on the ground! Would you like to take some? (Yes) or (No) \n").lower()
+  if user1_ == "yes":
+    if "coconut" in invent_1:
+      print("\n Hey! We already have enough coconuts! Don't get all cuckoo for coconuts. \n")
+      print("\n Wait a minute... What's that stuck to your coconut? Ah! Yes! There's plenty of leaves here that might do well for covering our shelter! \n")
+      user1_ = input("\n Would you like to add leaves to your inventory? (Yes) or (No) \n").lower()
+      if user1_ == "yes":
+        invent_1.append("leaves")
+        print("\n Leaves have been added to your inventory! \n")
+        at_trees()
+    if "coconut" not in invent_1:
+      invent_1.append("coconut")
+      print("\n A coconut has been added to your inventory! \n")
+      print("\n Your inventory contains: \n")
+      print(*invent_1, sep = ", ")
+      at_trees()
+  else:
+    at_trees()
+def sandy_shores_shelter():
+  global invent_1
+  global shelter_have_wood
+  global shelter_have_cover
+  global shelter_built
+  global building_shelter
+  if "wood" in invent_1:
+    shelter_have_wood = True
+  if "leaves" in invent_1:
+    shelter_have_cover = True
+  if shelter_have_cover == True and shelter_have_wood == True:
+    shelter_built = True
+  if shelter_built == True:
+    if building_shelter > 0:
+      shelter_build()
+    elif building_shelter == 0:
+      user1_ = input("\n It looks like you have everything you need to build a shelter! Would you like to build it now? (Yes) or (No) \n").lower()
+      if user1_ == "yes":
+        building_shelter += 1
+        print("\n Your shelter is built and it looks great! You're quite the survivor " + user1_name + "! \n")
+        shelter_build()
+      else:
+        sandy_shores_main()
+  elif shelter_have_cover == True and shelter_have_wood == False:
+    print("\n You need something to support your shelter. Some wood would work great! \n")
+    print("\n Your inventory contains: \n")
+    print(*invent_1, sep = ", ")
+    at_shelter()
+  elif shelter_have_wood == True and shelter_have_cover == False:
+    print("\n Your shelter isn't covered. There must be something nearby we can use. \n")
+    print("\n Your inventory contains: \n")
+    print(*invent_1, sep = ", ")
+    at_shelter()
+  elif shelter_have_wood == False and shelter_have_cover == False:
+    print("\n You don't have a shelter built yet. \n")
+    print("\n Your inventory contains: \n")
+    print(*invent_1, sep = ", ")
+    at_shelter()
+
+def shelter_build():
+  print("\n Your shelter is secure and you feel safe. \n")
+  print("\n Your inventory contains: \n")
+  print(*invent_1, sep = ", ")
+  sandy_shores_main()
+sandy_shores_main()
